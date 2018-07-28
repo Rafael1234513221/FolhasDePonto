@@ -19,7 +19,7 @@ class Sistema:
         self.descobre_entrada()
         self.descobre_horario_de_almoço()
         self.descobre_saida()
-        self.mostra_valores()
+        # self.mostra_valores()
         
     
     def descobre_entrada(self):
@@ -105,11 +105,15 @@ class Sistema:
         return f'{self.saida_hora}:{self.saida_minuto}'
     
 
-    def mostra_valores(self):
+    def __repr__(self):
         """
         Depois de adquirir os valores com as funções anteriores devemos repassar pro usuário.
         """
-        return print(f'Entrada = {self.descobre_entrada()} Almoço = {self.descobre_horario_de_almoço()} Saida = {self.descobre_saida()}')
+        return f'Entrada = {self.descobre_entrada()} Almoço = {self.descobre_horario_de_almoço()} Saida = {self.descobre_saida()}'
 
 
-Sistema()
+with open('histórico.txt', 'w', encoding='UTF-8') as arquivo:
+    cont = 0
+    while cont < 15000:
+        arquivo.write(f'{Sistema()}\n')
+        cont += 1
